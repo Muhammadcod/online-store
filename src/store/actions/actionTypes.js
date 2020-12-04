@@ -1,0 +1,3 @@
+export const CREATE_PRODUCT = 'CREATE_PRODUCT'
+// export const ADD_ANSWER_TO_QUESTION = "ADD_ANSWER_TO_QUESTION";
+// export const ADD_QUESTION = "ADD_QUESTION";
