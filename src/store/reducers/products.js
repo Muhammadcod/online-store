@@ -1,5 +1,7 @@
+import { CREATE_PRODUCT, CREATE_PRODUCT_ERROR } from '../actions/actionTypes'
+
 const initState = {
-  product: [
+  products: [
     {
       id: 1,
       title: 'shirt',
@@ -18,5 +20,14 @@ const initState = {
   ],
 }
 export default function products(state = initState, action) {
-  return state + action
+  switch (action.type) {
+    case CREATE_PRODUCT:
+      console.log('create product', action.type)
+      return state
+    case CREATE_PRODUCT_ERROR:
+      console.log('create product error', action.type)
+      return state
+    default:
+      return state
+  }
 }
