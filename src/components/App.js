@@ -1,17 +1,26 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import Dashboard from './dashboard/Dashboard'
 import Layout from './layout/Layout'
-// import { useForm } from 'react-hook-form'
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: ['poppins', 'sans-serif'].join(','),
+  },
+})
 
 function App() {
-  // const { register, handleSubmit, watch, errors } = useForm()
-  // const onSubmit = (data) => console.log(data)
-
-  // console.log(watch('example'))
   return (
-    <Layout>
-      <Dashboard />
-    </Layout>
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <Router>
+          <Switch>
+            <Route path="/" exact component={Dashboard} />
+          </Switch>
+        </Router>
+      </Layout>
+    </ThemeProvider>
   )
 }
 
