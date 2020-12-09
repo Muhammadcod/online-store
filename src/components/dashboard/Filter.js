@@ -1,138 +1,231 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Accordion from '@material-ui/core/Accordion'
-import AccordionSummary from '@material-ui/core/AccordionSummary'
-import AccordionDetails from '@material-ui/core/AccordionDetails'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
-import Slider from '@material-ui/core/Slider'
-// import { green } from '@material-ui/core/colors';
-import FormGroup from '@material-ui/core/FormGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
+import { MdKeyboardArrowUp } from 'react-icons/md'
 
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore' // eslint-disable-line import/no-extraneous-dependencies
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-}))
-
-function valuetext(value) {
-  return `${value}°C`
-}
-
-const marks = [
-  {
-    value: 0,
-    label: '0°C',
-  },
-  {
-    value: 100,
-    label: '100°C',
-  },
+const colors = [
+  '#B80000',
+  '#DB3E00',
+  '#FCCB00',
+  '#008B02',
+  '#006B76',
+  '#000000',
 ]
-
-export default function Filter() {
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-    checkedF: true,
-    checkedG: true,
-  })
-
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked })
-  }
-
-  const classes = useStyles()
-
+const sizes = ['XS', ' S ', ' M ', ' L ', 'XL', 'XXL']
+function Filter() {
   return (
     <>
-      <Grid item xs={3}>
+      <div className="col-md-3  ">
         <div className="sidebar">
-          <Accordion boxShadow={0}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography className={classes.heading}>PRODUCT TYPE</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={state.checkedA}
-                      onChange={handleChange}
-                      name="checkedA"
-                      color="black"
+          <div className="accordion mb-3" id="accordionExample">
+            <div className="card">
+              <div className="card-header" id="headingOne">
+                <h6 className="mb-0 d-flex justify-content-between align-items-center">
+                  <span>PRODUCT TYPE</span>
+                  <span
+                    className="btn  p-0"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    <MdKeyboardArrowUp />
+                  </span>
+                </h6>
+              </div>
+
+              <div
+                id="collapseOne"
+                className="collapse show"
+                aria-labelledby="headingOne"
+                data-parent="#accordionExample"
+              >
+                <div className="card-body">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="defaultCheck1"
                     />
-                  }
-                  label="T-shirt"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={state.checkedB}
-                      onChange={handleChange}
-                      name="checkedB"
-                      color="black"
+                    <label className="form-check-label" htmlFor="defaultCheck1">
+                      T-Shirt
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="defaultCheck2"
                     />
-                  }
-                  label="Dress shirt"
-                />
-                <FormControlLabel
-                  control={<Checkbox name="checkedC" color="black" />}
-                  label="Sweatshirt"
-                />
-              </FormGroup>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography className={classes.heading}>PRICE</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Slider
-                orientation="horizontal"
-                defaultValue={[0, 100]}
-                aria-labelledby="vertical-slider"
-                getAriaValueText={valuetext}
-                marks={marks}
-              />
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel3a-content"
-              id="panel3a-header"
-            >
-              <Typography className={classes.heading}>
-                Disabled Accordion
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
+                    <label className="form-check-label" htmlFor="defaultCheck2">
+                      Trouser
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="accordion mb-3" id="accordionExample">
+            <div className="card">
+              <div className="card-header" id="headingTwo">
+                <h6 className="mb-0 d-flex justify-content-between align-items-center">
+                  <span>PRODUCT TYPE</span>
+                  <span
+                    className="btn  p-0"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseTwo"
+                    aria-expanded="true"
+                    aria-controls="collapseTwo"
+                  >
+                    #1
+                  </span>
+                </h6>
+              </div>
+
+              <div
+                id="collapseOne"
+                className="collapse show"
+                aria-labelledby="headingTwo"
+                data-parent="#accordionExample"
+              >
+                <div className="card-body">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="defaultCheck1"
+                    />
+                    <label className="form-check-label" htmlFor="defaultCheck1">
+                      T-Shirt
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="defaultCheck2"
+                    />
+                    <label className="form-check-label" htmlFor="defaultCheck2">
+                      Trouser
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="accordion mb-3" id="accordionExample">
+            <div className="card">
+              <div className="card-header" id="headingThree">
+                <h6 className="mb-0 d-flex justify-content-between align-items-center">
+                  <span>SIZE</span>
+                  <span
+                    className="btn  p-0"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseThree"
+                    aria-expanded="true"
+                    aria-controls="collapseThree"
+                  >
+                    #1
+                  </span>
+                </h6>
+              </div>
+
+              <div
+                id="collapseThree"
+                className="collapse show"
+                aria-labelledby="headingThree"
+                data-parent="#accordionExample"
+              >
+                <div className="card-body">
+                  <div
+                    className="btn-group"
+                    role="group"
+                    aria-label="First group"
+                  >
+                    {sizes.map((size, index) => (
+                      <button
+                        type="button"
+                        className="btn border px-2 color__picker__button"
+                      >
+                        {index === 1 || index === 2 || index === 3 ? (
+                          <span
+                            style={{
+                              padding: '0 2.7px',
+                            }}
+                          >
+                            {size}
+                          </span>
+                        ) : (
+                          <span>{size}</span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="accordion mb-3" id="accordionExample">
+            <div className="card">
+              <div className="card-header" id="headingFour">
+                <h6 className="mb-0 d-flex justify-content-between align-items-center">
+                  <span>COLOR</span>
+                  <span
+                    className="btn  p-0"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseFour"
+                    aria-expanded="true"
+                    aria-controls="collapseFour"
+                  >
+                    #1
+                  </span>
+                </h6>
+              </div>
+
+              <div
+                id="collapseFour"
+                className="collapse show"
+                aria-labelledby="headingFour"
+                data-parent="#accordionExample"
+              >
+                <div className="card-body">
+                  <div
+                    className="btn-group"
+                    role="group"
+                    aria-label="First group"
+                  >
+                    {colors.map((color) => (
+                      <button
+                        type="button"
+                        className="btn border px-2 color__picker__button"
+                      >
+                        <div
+                          className="color"
+                          style={{
+                            backgroundColor: `${color}`,
+                            width: '18px',
+                            height: '18px',
+                          }}
+                        ></div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </Grid>
+      </div>
     </>
   )
 }
+
+export default Filter

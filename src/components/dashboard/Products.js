@@ -129,3 +129,15 @@ Products.propTypes = {
 }
 
 export default Products
+{colors.map((color) => (
+    <button type="button" className="btn btn-secondary">
+        <div
+            className="color"
+            style={{
+                backgroundColor: `${color}`,
+                width: '15px',
+                height: '15px',
+            }}
+        ></div>
+    </button>
+))}

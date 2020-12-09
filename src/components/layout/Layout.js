@@ -6,6 +6,9 @@ function Layout({ children }) {
   return (
     <div className="layout">
       <Header />
+      <div className="py-3">
+        <div className="container">All Products</div>
+      </div>
       {children}
     </div>
   )
