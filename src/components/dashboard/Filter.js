@@ -10,18 +10,21 @@ const colors = [
   '#000000',
 ]
 const sizes = ['XS', ' S ', ' M ', ' L ', 'XL', 'XXL']
+
 function Filter() {
+  // const { icon, setIcon } = useState(false)
+
   return (
     <>
       <div className="col-md-3  ">
-        <div className="sidebar">
+        <div className="sidebar pt-2">
           <div className="accordion mb-3" id="accordionExample">
             <div className="card">
               <div className="card-header" id="headingOne">
                 <h6 className="mb-0 d-flex justify-content-between align-items-center">
                   <span>PRODUCT TYPE</span>
                   <span
-                    className="btn  p-0"
+                    className="btn  p-0 icon"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseOne"
@@ -71,7 +74,7 @@ function Filter() {
             <div className="card">
               <div className="card-header" id="headingTwo">
                 <h6 className="mb-0 d-flex justify-content-between align-items-center">
-                  <span>PRODUCT TYPE</span>
+                  <span>PRICE</span>
                   <span
                     className="btn  p-0"
                     type="button"
@@ -86,7 +89,7 @@ function Filter() {
               </div>
 
               <div
-                id="collapseOne"
+                id="collapseTwo"
                 className="collapse show"
                 aria-labelledby="headingTwo"
                 data-parent="#accordionExample"
