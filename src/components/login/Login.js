@@ -6,14 +6,13 @@ function Login() {
       <div className="border container d-flex justify-content-center">
         <div className="border text-center">
           <h5>Log in</h5>
-          <p className="small align-center">
+          <p className="small">
             Lorem Ipsum is simply dummy text of the printing <br /> and
             typesetting industry. Lorem Ipsum has been the <br />{' '}
             industry&apos;s standard dummy text ever since the 1500s
           </p>
           <form>
             <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Email address</label>
               <input
                 type="email"
                 className="form-control"
@@ -21,12 +20,8 @@ function Login() {
                 aria-describedby="emailHelp"
                 placeholder="email"
               />
-              <small id="emailHelp" className="form-text text-muted">
-                We&apos;ll never share your email with anyone else.
-              </small>
             </div>
             <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Password</label>
               <input
                 type="password"
                 className="form-control"
@@ -40,14 +35,29 @@ function Login() {
                 className="form-check-input"
                 id="exampleCheck1"
               />
-              <label className="form-check-label" htmlFor="exampleCheck1">
-                Check me out
+              <label
+                className="form-check-label small text-left"
+                htmlFor="exampleCheck1"
+              >
+                Keep me signed in
               </label>
             </div>
+            <div className="">
+              <button type="submit" className="btn btn-primary">
+                Facebook
+              </button>{' '}
+              <button type="submit" className="btn btn-primary">
+                Gmail
+              </button>
+            </div>
             <button type="submit" className="btn btn-primary">
-              Submit
+              Sign in
             </button>
           </form>
+          <small className="form-text text-muted">
+            Not a member yet?
+            <a href="/">Sign in</a>
+          </small>
         </div>
       </div>
     </div>
