@@ -3,13 +3,12 @@ import React from 'react'
 function Login() {
   return (
     <div>
-      <div className="border container d-flex justify-content-center">
-        <div className="border text-center">
-          <h5>Log in</h5>
-          <p className="small">
+      <div className=" container d-flex justify-content-center">
+        <div className="login-form text-center">
+          <h5 className="login__text">Log in</h5>
+          <p className="small px-2 mb-5">
             Lorem Ipsum is simply dummy text of the printing <br /> and
-            typesetting industry. Lorem Ipsum has been the <br />{' '}
-            industry&apos;s standard dummy text ever since the 1500s
+            typesetting industry.
           </p>
           <form>
             <div className="form-group">
@@ -42,21 +41,21 @@ function Login() {
                 Keep me signed in
               </label>
             </div>
-            <div className="">
-              <button type="submit" className="btn btn-primary">
+            <div className="mb-3">
+              <button type="submit" className="btn border">
                 Facebook
               </button>{' '}
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn border">
                 Gmail
               </button>
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn border">
               Sign in
             </button>
           </form>
           <small className="form-text text-muted">
             Not a member yet?
-            <a href="/">Sign in</a>
+            <a href="/">Sign up</a>
           </small>
         </div>
       </div>

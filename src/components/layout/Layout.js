@@ -10,6 +10,7 @@ function Layout({ children }) {
         <div className="container">All Products</div>
       </div>
       {children}
+      <Header />
     </div>
   )
 }
