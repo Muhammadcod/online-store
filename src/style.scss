@@ -34,3 +34,18 @@ body {
   }
 }
 
+form {
+  .form-control {
+    &.form-control__custom {
+      border-radius: 40px;
+      padding: .375rem 1.5rem;
+    }
+  }
+  .btn {
+    &.btn__submit {
+      width: 100%;
+      border-radius: 40px;
+    }
+  }
+}
+

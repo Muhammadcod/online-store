@@ -4,6 +4,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import Dashboard from './dashboard/Dashboard'
 import Layout from './layout/Layout'
 import Login from './login/Login'
+import Signup from './login/Signup'
 
 const theme = createMuiTheme({
   typography: {
@@ -19,6 +20,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={Dashboard} />
             <Route path="/login" exact component={Login} />
+            <Route path="/signup" exact component={Signup} />
           </Switch>
         </Router>
       </Layout>
