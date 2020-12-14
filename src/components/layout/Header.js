@@ -9,8 +9,8 @@ function Header() {
       <div className="header border">
         <nav className="navbar navbar-expand-lg navbar-light  d-flex justify-content-between container space">
           <a className="navbar-brand" href="/">
-            <img src="/" alt="" />
-            Navbar
+            <img src="/noun_cloth.svg" alt="" />
+            <span> Navbar</span>
           </a>
 
           <ul className="navbar-nav">
@@ -39,10 +39,10 @@ function Header() {
             <form className="form-inline my-2 my-lg-0">
               <AiOutlineSearch />
             </form>
-            <span className="border align-self-center">
+            <span className=" align-self-center">
               <HiOutlineShoppingCart />
             </span>
-            <span className="border align-self-center">
+            <span className=" align-self-center">
               <FaRegUser />
             </span>
           </div>
