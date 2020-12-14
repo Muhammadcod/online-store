@@ -45,6 +45,23 @@ form {
     &.btn__submit {
       width: 100%;
       border-radius: 40px;
+      background: #FBB03B;
+      color: #000000;
+    }
+    &.btn__facebook {
+      width: 48%;
+      border-radius: 40px;
+      background: #3B5998;
+      border-color: #3B5998;
+
+      color: #FFFFFF;
+    }
+    &.btn__gmail {
+      width: 48%;
+      border-radius: 40px;
+      background: #FFFFFF;
+      border-color: #F1584D;
+      color: #000000;
     }
   }
 }

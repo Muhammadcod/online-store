@@ -5,7 +5,9 @@ function Signup() {
       <div>
         <div className="container d-flex justify-content-center">
           <div className="signup-form text-center">
-            <h5 className="login__text">Log in</h5>
+            <h5 className="login__text">
+              Create an account and <br /> discover the benefits
+            </h5>
             <p className="small px-2 mb-5">
               Lorem Ipsum is simply dummy text of the printing <br /> and
               typesetting industry.
@@ -44,7 +46,7 @@ function Signup() {
                   placeholder="password"
                 />
               </div>
-              <div className="form-group form-check">
+              <div className="form-group form-check  mb-5">
                 <input
                   type="checkbox"
                   className="form-check-input form-control__custom"
@@ -54,7 +56,7 @@ function Signup() {
                   className="form-check-label small text-left"
                   htmlFor="exampleCheck1"
                 >
-                  Keep me signed in
+                  I agree to the Google Terms of Service and Privacy Policy
                 </label>
               </div>
               <button type="submit" className="btn border btn__submit">

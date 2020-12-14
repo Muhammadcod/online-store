@@ -1,4 +1,7 @@
 import React from 'react'
+import { AiOutlineSearch } from 'react-icons/ai'
+import { HiOutlineShoppingCart } from 'react-icons/hi'
+import { FaRegUser } from 'react-icons/fa'
 
 function Header() {
   return (
@@ -6,6 +9,7 @@ function Header() {
       <div className="header border">
         <nav className="navbar navbar-expand-lg navbar-light  d-flex justify-content-between container space">
           <a className="navbar-brand" href="/">
+            <img src="/" alt="" />
             Navbar
           </a>
 
@@ -31,15 +35,17 @@ function Header() {
               </a>
             </li>
           </ul>
-
-          <form className="form-inline my-2 my-lg-0">
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
-          </form>
+          <div className="d-flex">
+            <form className="form-inline my-2 my-lg-0">
+              <AiOutlineSearch />
+            </form>
+            <span className="border align-self-center">
+              <HiOutlineShoppingCart />
+            </span>
+            <span className="border align-self-center">
+              <FaRegUser />
+            </span>
+          </div>
         </nav>
       </div>
     </>

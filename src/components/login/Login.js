@@ -14,7 +14,7 @@ function Login() {
             <div className="form-group">
               <input
                 type="email"
-                className="form-control"
+                className="form-control form-control__custom"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="email"
@@ -23,7 +23,7 @@ function Login() {
             <div className="form-group">
               <input
                 type="password"
-                className="form-control"
+                className="form-control form-control__custom"
                 id="exampleInputPassword1"
                 placeholder="password"
               />
@@ -41,15 +41,15 @@ function Login() {
                 Keep me signed in
               </label>
             </div>
-            <div className="mb-3">
-              <button type="submit" className="btn border">
+            <div className="mb-3 d-flex justify-content-between">
+              <button type="submit" className="btn border btn__facebook">
                 Facebook
-              </button>{' '}
-              <button type="submit" className="btn border">
+              </button>
+              <button type="submit" className="btn btn__gmail">
                 Gmail
               </button>
             </div>
-            <button type="submit" className="btn border">
+            <button type="submit" className="btn btn__submit">
               Sign in
             </button>
           </form>
