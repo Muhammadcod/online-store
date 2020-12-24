@@ -1,26 +1,18 @@
-import { CREATE_PRODUCT, CREATE_PRODUCT_ERROR } from '../actions/actionTypes'
+import {
+  CREATE_PRODUCT,
+  CREATE_PRODUCT_ERROR,
+  RECIEVE_PRODUCTS,
+} from '../actions/actionTypes'
 
-const initState = {
-  products: [
-    {
-      id: 1,
-      title: 'shirt',
-      price: 50,
-    },
-    {
-      id: 2,
-      title: 'shirt',
-      price: 60,
-    },
-    {
-      id: 3,
-      title: 'shirt',
-      price: 70,
-    },
-  ],
-}
+const initState = {}
+
 export default function products(state = initState, action) {
   switch (action.type) {
+    case RECIEVE_PRODUCTS:
+      return {
+        ...state,
+        ...action.products,
+      }
     case CREATE_PRODUCT:
       console.log('create product', action.type)
       return state

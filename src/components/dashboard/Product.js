@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { formatProduct } from '../../util/helpers'
+// import { formatProduct } from '../../util/helpers'
 
 function Product(props) {
   const { product } = props
-  const { price, title } = product
+  const { title, price } = product
+
   return (
     <>
       <div className="col product--item">
@@ -23,16 +24,17 @@ function Product(props) {
   )
 }
 function mapStateToProps(state, { id }) {
-  const product = state.firestore.data.products[id]
+  const product = state.products[id]
+
   return {
-    product: product ? formatProduct(product) : null,
+    product,
   }
 }
 
 Product.propTypes = {
-  product: PropTypes.object,
-  price: PropTypes.number,
   title: PropTypes.string,
+  price: PropTypes.number,
+  product: PropTypes.object,
 }
 
 export default connect(mapStateToProps)(Product)

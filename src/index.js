@@ -12,7 +12,11 @@ import reducer from './store/reducers'
 import middleware from './store/middleware'
 
 const store = createStore(reducer, middleware)
-const rrfConfig = { userProfile: 'users' }
+const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true,
+  attachAuthIsReady: true,
+}
 const rrfProps = {
   firebase,
   config: rrfConfig,

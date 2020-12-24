@@ -5,7 +5,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import Filter from './Filter'
 import Product from './Product'
-// import Products from './Products'
+// import VisibilityFilter from './VisibilityFilter'
 
 function Dashboard(props) {
   const { products } = props
@@ -73,12 +73,8 @@ function Dashboard(props) {
             <br />
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
               {products &&
-                products.map((productId) => (
-                  <Product keys={productId} id={productId} />
-                ))}
-              {products &&
-                products.map((productId) => (
-                  <Product keys={productId} id={productId} />
+                products.map((product) => (
+                  <Product keys={product} id={product} />
                 ))}
             </div>
           </div>
@@ -89,10 +85,8 @@ function Dashboard(props) {
 }
 
 function mapStateToProps(state) {
-  console.log('===', Object.values(state.firestore))
-  const products = state.firestore.data.products
-    ? Object.keys(state.firestore.data.products)
-    : null
+  console.log('===', Object.keys(state.products))
+  const products = state.products ? Object.keys(state.products) : null
 
   return {
     products,

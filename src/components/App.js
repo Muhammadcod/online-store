@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { handleInitialData } from '../store/actions/product'
 import Dashboard from './dashboard/Dashboard'
 import Layout from './layout/Layout'
 import Login from './login/Login'
@@ -13,7 +16,11 @@ const theme = createMuiTheme({
   },
 })
 
-function App() {
+function App(props) {
+  useEffect(() => {
+    props.dispatch(handleInitialData())
+  })
+
   return (
     <ThemeProvider theme={theme}>
       <Layout>
@@ -30,4 +37,8 @@ function App() {
   )
 }
 
-export default App
+App.propTypes = {
+  dispatch: PropTypes.func,
+}
+
+export default connect()(App)
