@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ProductHeader() {
+function ProductHeader({ products }) {
   return (
     <>
       <div className="d-flex align-items-center">

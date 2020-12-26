@@ -13,7 +13,7 @@ const ProductsContainer = (props) => {
   return (
     <>
       <div className="col-md-9 product--wrapper">
-        <ProductHeader />
+        <ProductHeader products={products} />
         <br />
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
           {products &&
