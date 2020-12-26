@@ -1,5 +1,6 @@
 import React from 'react'
 import { MdKeyboardArrowUp } from 'react-icons/md'
+import Color from './Color'
 
 const colors = [
   '#B80000',
@@ -200,27 +201,7 @@ function Filter() {
                 data-parent="#accordionExample"
               >
                 <div className="card-body">
-                  <div
-                    className="btn-group"
-                    role="group"
-                    aria-label="First group"
-                  >
-                    {colors.map((color) => (
-                      <button
-                        type="button"
-                        className="btn border px-2 color__picker__button"
-                      >
-                        <div
-                          className="color"
-                          style={{
-                            backgroundColor: `${color}`,
-                            width: '18px',
-                            height: '18px',
-                          }}
-                        ></div>
-                      </button>
-                    ))}
-                  </div>
+                  <Color colors={colors} />
                 </div>
               </div>
             </div>

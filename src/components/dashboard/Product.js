@@ -1,12 +1,10 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-// import { formatProduct } from '../../util/helpers'
+import { connect } from 'react-redux'
 
 function Product(props) {
   const { product } = props
   const { title, price } = product
-
   return (
     <>
       <div className="col product--item">
@@ -23,18 +21,19 @@ function Product(props) {
     </>
   )
 }
+
+Product.propTypes = {
+  title: PropTypes.string,
+  price: PropTypes.number,
+  product: PropTypes.object,
+}
+
 function mapStateToProps(state, { id }) {
   const product = state.products[id]
 
   return {
     product,
   }
-}
-
-Product.propTypes = {
-  title: PropTypes.string,
-  price: PropTypes.number,
-  product: PropTypes.object,
 }
 
 export default connect(mapStateToProps)(Product)

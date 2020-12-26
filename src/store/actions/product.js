@@ -22,18 +22,17 @@ export function handleInitialData() {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase()
     const db = firebase.firestore()
-    console.log('db', db)
+
     db.collection('products')
       .get()
       .then((snapshot) => {
         const products = []
 
-        snapshot.forEach((childSnapshot) => {
-          products.push({
-            ...childSnapshot.data(),
-          })
+        snapshot.forEach((doc) => {
+          const currentID = doc.id
+          const appObj = { ...doc.data(), id: currentID }
+          products.push(appObj)
         })
-
         dispatch(receiveProducts(products))
       })
   }

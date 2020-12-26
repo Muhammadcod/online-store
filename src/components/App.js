@@ -9,6 +9,7 @@ import Layout from './layout/Layout'
 import Login from './login/Login'
 import Homepage from './hompage/homepage'
 import Signup from './login/Signup'
+import ProductSingle from './dashboard/ProductSingle'
 
 const theme = createMuiTheme({
   typography: {
@@ -28,6 +29,7 @@ function App(props) {
           <Switch>
             <Route path="/" exact component={Homepage} />
             <Route path="/product" exact component={Dashboard} />
+            <Route path="/product/:id" exact component={ProductSingle} />
             <Route path="/login" exact component={Login} />
             <Route path="/signup" exact component={Signup} />
           </Switch>
