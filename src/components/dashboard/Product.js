@@ -23,9 +23,13 @@ function Product(props) {
 }
 
 Product.propTypes = {
-  title: PropTypes.string,
-  price: PropTypes.number,
-  product: PropTypes.object,
+  product: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 }
 
 function mapStateToProps(state, { id }) {

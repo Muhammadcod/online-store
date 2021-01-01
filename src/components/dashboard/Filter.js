@@ -1,5 +1,4 @@
 import React from 'react'
-import { MdKeyboardArrowUp } from 'react-icons/md'
 import Color from './Color'
 import FilterList from './FilterList'
 
@@ -14,8 +13,6 @@ const colors = [
 const sizes = ['XS', ' S ', ' M ', ' L ', 'XL', 'XXL']
 
 function Filter() {
-  // const { icon, setIcon } = useState(false)
-
   return (
     <>
       <div className="col-md-3  ">

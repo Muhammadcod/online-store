@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { compose } from 'redux'
@@ -29,7 +29,13 @@ const ProductsContainer = (props) => {
 }
 
 ProductsContainer.propTypes = {
-  products: PropTypes.array,
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 }
 
 function mapStateToProps(state) {

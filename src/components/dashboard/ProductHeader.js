@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 function ProductHeader({ products }) {
   return (
@@ -53,6 +54,16 @@ function ProductHeader({ products }) {
       </div>
     </>
   )
+}
+
+ProductHeader.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 }
 
 export default ProductHeader

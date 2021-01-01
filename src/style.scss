@@ -2,6 +2,25 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+// Navigation
+
+//.nav-bar {
+//  position: absolute;
+//  z-index: 2;
+//  width: 100%;
+//  color: white;
+//}
+
+// Banner
+
+.info {
+  position: relative;
+  background: #FFFFFF;
+  margin-top: -26px;
+  z-index: 2;
+  width: 70%;
+  border-top-right-radius: 40px;
+}
 .space {
   height: 70px;
 }
@@ -40,6 +59,11 @@ form {
       border-radius: 40px;
       padding: .375rem 1.5rem;
     }
+    &.form-control__subscribe__custom {
+      border-radius: 40px;
+      width: 50%;
+      padding: .375rem 1.5rem;
+    }
   }
   .btn {
     &.btn__submit {
@@ -63,6 +87,26 @@ form {
       border-color: #F1584D;
       color: #000000;
     }
+    &.btn__subscribe {
+      width: 25%;
+      height: calc(1.5em + .75rem + 2px);
+      border-radius: 40px;
+      background: #FFFFFF;
+      border-color: #F1584D;
+      color: #000000;
+    }
   }
 }
 
+.newsletter-wrap {
+  .newsletter--inner--wrap {
+    height: 250px;
+
+    .newsletter--title, .newsletter--form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+}

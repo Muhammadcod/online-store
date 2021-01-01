@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { handleInitialData } from '../store/actions/product'
-import Dashboard from './dashboard/Dashboard'
-import Layout from './layout/Layout'
-import Login from './login/Login'
-import Homepage from './hompage/homepage'
-import Signup from './login/Signup'
-import ProductSingle from './dashboard/ProductSingle'
+import Dashboard from '../components/dashboard/Dashboard'
+import Layout from '../components/layout/Layout'
+import Login from '../components/login/Login'
+import Homepage from '../components/hompage/homepage'
+import Signup from '../components/login/Signup'
+import ProductSingle from '../components/dashboard/ProductSingle'
 
 const theme = createMuiTheme({
   typography: {

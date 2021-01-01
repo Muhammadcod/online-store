@@ -1,16 +1,22 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import Product from '../dashboard/Product'
 
-function Homepage() {
+function Homepage(props) {
+  const { products } = props
+
   return (
     <div>
-      <div
+      <section
         id="carouselExampleInterval"
         className="carousel slide carousel-fade"
         data-ride="carousel"
       >
         <div className="carousel-inner">
           <div className="carousel-item active" data-interval="10000">
-            <img src="/joao-silas.png" className="d-block w-100" alt="..." />
+            <img src="/joao-silas-2.png" className="d-block w-100" alt="..." />
             <div className="carousel-caption d-none d-md-block">
               <h5>Sale of the summer collection</h5>
             </div>
@@ -62,9 +68,71 @@ function Homepage() {
           ></span>
           <span className="sr-only">Next</span>
         </a>
-      </div>
+      </section>
+
+      <section className="info border">A</section>
+      <section className="container border">
+        <div className="row">
+          <div className="col-6 border">A</div>
+          <div className="col-3 border">B</div>
+          <div className="col-3 border">C</div>
+        </div>
+      </section>
+      <section className="">ss</section>
+      <section className="container latest-product">
+        <div className="latest--product--title text-center">Latest Product</div>
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
+          {products &&
+            products.slice(Math.max(products.length - 3, 0)).map((id) => (
+              <Link to={`/product/${id}`} keys={id}>
+                <Product id={id} />
+              </Link>
+            ))}
+        </div>
+      </section>
+      <section className="newsletter-wrap container border">
+        <div className="newsletter--inner--wrap row ">
+          <div className="col-md-12 col-lg-6 newsletter--title">
+            Subscribe to our newsletter and <br /> recieve exclusive offers
+            every week
+          </div>
+          <div className="col-md-12 col-lg-6 newsletter--form">
+            <form className="d-flex border ">
+              <input
+                type="email"
+                className="form-control form-control__subscribe__custom mr-4"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter your email"
+              />
+
+              <button type="submit" className="btn btn__subscribe">
+                subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
 
-export default Homepage
+Homepage.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+}
+
+function mapStateToProps(state) {
+  const products = state.products ? Object.keys(state.products) : null
+
+  return {
+    products,
+  }
+}
+
+export default connect(mapStateToProps)(Homepage)
