@@ -4,14 +4,16 @@ body {
 
 // Navigation
 
-//.nav-bar {
-//  position: absolute;
-//  z-index: 2;
-//  width: 100%;
-//  color: white;
-//}
+.nav-bar {
+  position: relative;
+  z-index: 2;
+}
 
 // Banner
+
+.hero {
+  margin-top: -70px;
+}
 
 .info {
   position: relative;
@@ -91,22 +93,48 @@ form {
       width: 25%;
       height: calc(1.5em + .75rem + 2px);
       border-radius: 40px;
-      background: #FFFFFF;
-      border-color: #F1584D;
+      background: #FBB03B;
       color: #000000;
     }
   }
 }
 
 .newsletter-wrap {
+  background: #C33764;
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("./images/banner.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("./images/banner.png");
+  overflow: hidden;
+
   .newsletter--inner--wrap {
-    height: 250px;
+    height: 242px;
 
     .newsletter--title, .newsletter--form {
       display: flex;
       align-items: center;
       justify-content: center;
     }
+    .newsletter--title {
+      color: #FFFFFF;
+    }
 
   }
+}
+
+.link-one {
+  background: #C33764;
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/adult.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/adult.png");
+  overflow: hidden;
+}
+.link-two {
+  background: #C33764;
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/beach.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/beach.png");
+  overflow: hidden;
+}
+.link-three {
+  background: #C33764;
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/sales.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/sales.png");
+  overflow: hidden;
 }
