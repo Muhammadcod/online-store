@@ -17,6 +17,7 @@ function ProductSingle(props) {
   }
   const { product } = props
   const { title, price, colors } = product
+
   return (
     <>
       <div className="container">

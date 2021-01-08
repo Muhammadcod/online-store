@@ -18,10 +18,31 @@ body {
 .info {
   position: relative;
   background: #FFFFFF;
-  margin-top: -26px;
+  margin-top: -110px;
   z-index: 2;
   width: 70%;
-  border-top-right-radius: 40px;
+  padding-left: 115px;
+  padding-right: 47px;
+  border-radius: 0 50px 0 0;
+  display: flex;
+
+  div.card {
+    border: 0;
+
+    .card-body {
+      .card-title {
+        font-size: 16px;
+        font-weight: 600;
+        opacity: 1;
+      }
+      .card-text {
+        font-size: 13px;
+        color: #808080;
+        opacity: 1;
+      }
+    }
+
+  }
 }
 .space {
   height: 70px;
@@ -32,11 +53,9 @@ body {
 }
 
 .sidebar {
-  //height: 50vh;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  //border: 1px solid black;
 
   &--item {
     border: 1px solid #e6e6e6;
@@ -44,7 +63,7 @@ body {
   }
 
   .accordion {
-    .card {
+    div.card {
       border-radius: 0;
 
       .card-header {
@@ -120,21 +139,30 @@ form {
   }
 }
 
-.link-one {
-  background: #C33764;
-  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/adult.png");
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/adult.png");
-  overflow: hidden;
+
+.advert {
+
+  div.card {
+    border: 0;
+
+    .card-body {
+      padding: 0;
+
+      .card-title {
+        font-size: 16px;
+        font-weight: 600;
+        opacity: 1;
+      }
+      .card-text {
+        font-size: 13px;
+        color: #808080;
+        opacity: 1;
+      }
+    }
+  }
 }
-.link-two {
-  background: #C33764;
-  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/beach.png");
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/beach.png");
-  overflow: hidden;
-}
-.link-three {
-  background: #C33764;
-  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/sales.png");
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/sales.png");
-  overflow: hidden;
+
+.section-title {
+  font-size: 29px;
+  font-weight: 300;
 }

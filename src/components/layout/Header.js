@@ -36,10 +36,10 @@ function Header() {
             </li>
           </ul>
           <div className="d-flex">
-            <form className="form-inline my-2 my-lg-0">
+            <form className="form-inline my-2 my-lg-0 mr-4">
               <AiOutlineSearch />
             </form>
-            <span className=" align-self-center">
+            <span className=" align-self-center mr-4">
               <HiOutlineShoppingCart />
             </span>
             <span className=" align-self-center">
