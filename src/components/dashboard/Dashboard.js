@@ -1,5 +1,5 @@
 import React from 'react'
-import Filter from './Filter'
+// import Filter from './Filter'
 import ProductsContainer from '../../containers/ProductsContainer'
 
 function Dashboard() {
@@ -7,7 +7,7 @@ function Dashboard() {
     <>
       <div className="container ">
         <div className="row">
-          <Filter />
+          {/* <Filter /> */}
           <ProductsContainer />
         </div>
       </div>

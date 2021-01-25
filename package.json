@@ -30,7 +30,8 @@
     "redux-firestore": "^0.14.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,6 +41,9 @@
     "lint": "eslint ./ --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"{,!(node_modules)/**/}*.js\""
+  },
+  "resolutions": {
+    "styled-components": "^5"
   },
   "eslintConfig": {
     "extends": "@imaginary-cloud/react"

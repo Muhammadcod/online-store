@@ -1,25 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function Product(props) {
-  const { product } = props
+  const { product, id } = props
   const { title, price } = product
 
   return (
     <>
       <div className="col product--item">
-        <div style={{ width: `100%` }} className="border">
-          <img src="/boy.png" alt="item" className="w-100" />
+        <div className="card">
+          <Link to={`/product/${id}`} keys={id}>
+            <img src="/boy.png" className="card-img-top" alt="item" />
+          </Link>
+
+          <div className="card-body">
+            <Link to={`/product/${id}`} keys={id}>
+              <p className="card-title item__name">{title}</p>
+            </Link>
+
+            <span className="card-text item__price">
+              {new Intl.NumberFormat('en-NG', {
+                style: 'currency',
+                currency: 'NGN',
+                maximumFractionDigits: 2,
+              }).format(price)}
+            </span>
+          </div>
         </div>
-        <p className="item__name">{title}</p>
-        <span className="item__price">
-          {new Intl.NumberFormat('en-NG', {
-            style: 'currency',
-            currency: 'NGN',
-            maximumFractionDigits: 2,
-          }).format(price)}
-        </span>
       </div>
     </>
   )
@@ -27,6 +36,7 @@ function Product(props) {
 
 Product.propTypes = {
   product: PropTypes.object,
+  id: PropTypes.number,
 }
 
 function mapStateToProps(state, { id }) {
@@ -34,6 +44,7 @@ function mapStateToProps(state, { id }) {
 
   return {
     product,
+    id,
   }
 }
 

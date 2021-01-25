@@ -84,7 +84,7 @@ function Homepage(props) {
                 <h5 className="card-title">Free Shipping</h5>
                 <p className="card-text">On purchases over $199</p>
               </div>
-            </div>{' '}
+            </div>
           </div>
           <div className="col">
             <div className="card">
@@ -105,7 +105,7 @@ function Homepage(props) {
                 </p>
               </div>
             </div>
-          </div>{' '}
+          </div>
         </div>
       </section>
 
