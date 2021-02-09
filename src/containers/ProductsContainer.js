@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import Product from '../components/dashboard/Product'
+// import ProductModal from '../components/dashboard/ProductModal'
 // import ProductHeader from '../components/dashboard/ProductHeader'
 
 const ProductsContainer = (props) => {
@@ -14,8 +15,8 @@ const ProductsContainer = (props) => {
       <div className="col product--wrapper">
         {/* <ProductHeader products={products} /> */}
         <br />
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-          {products && products.map((id) => <Product id={id} />)}
+        <div className="row row-cols-1 row-cols-md-4">
+          {products && products.map((id) => <Product key={id} id={id} />)}
         </div>
       </div>
     </>

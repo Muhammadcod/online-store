@@ -6,7 +6,7 @@ import { FaRegUser } from 'react-icons/fa'
 function Header() {
   return (
     <>
-      <div className="header nav-bar">
+      <div className="header nav-bar border">
         <nav className="navbar navbar-expand-lg  navbar-light  d-flex justify-content-between container space">
           <a className="navbar-brand " href="/">
             <img src="/noun_cloth.svg" alt="" />

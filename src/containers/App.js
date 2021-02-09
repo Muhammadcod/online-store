@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch, useLocation } from 'react-router-dom'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { handleInitialData } from '../store/actions/product'
 import Dashboard from '../components/dashboard/Dashboard'
@@ -10,6 +10,7 @@ import Login from '../components/login/Login'
 import Homepage from '../components/hompage/homepage'
 import Signup from '../components/login/Signup'
 import ProductSingle from '../components/dashboard/ProductSingle'
+import ProductModal from '../components/dashboard/ProductModal'
 
 const theme = createMuiTheme({
   typography: {
@@ -18,6 +19,9 @@ const theme = createMuiTheme({
 })
 
 function App(props) {
+  const location = useLocation()
+  const background = location.state && location.state.background
+
   useEffect(() => {
     props.dispatch(handleInitialData())
   })
@@ -25,15 +29,19 @@ function App(props) {
   return (
     <ThemeProvider theme={theme}>
       <Layout>
-        <Router>
-          <Switch>
+        <div>
+          <Switch location={background || location}>
             <Route path="/" exact component={Homepage} />
             <Route path="/product" exact component={Dashboard} />
             <Route path="/product/:id" exact component={ProductSingle} />
             <Route path="/login" exact component={Login} />
             <Route path="/signup" exact component={Signup} />
           </Switch>
-        </Router>
+
+          {background && (
+            <Route path="/product/:id" exact children={<ProductModal />} /> // eslint-disable-line
+          )}
+        </div>
       </Layout>
     </ThemeProvider>
   )

@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 import { createFirestoreInstance } from 'redux-firestore'
 import { createStore } from 'redux'
+import { BrowserRouter as Router } from 'react-router-dom'
 import firebase from './config/fbConfig'
 import App from './containers/App'
 import reducer from './store/reducers'
@@ -28,7 +29,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
-        <App />
+        <Router>
+          <App />
+        </Router>
       </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,

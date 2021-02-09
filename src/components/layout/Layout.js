@@ -4,7 +4,10 @@ import Header from './Header'
 
 function Layout({ children }) {
   return (
-    <div className="layout">
+    <div
+      className="layout d-flex justify-content-between flex-column"
+      style={{ minHeight: `100vh` }}
+    >
       <Header />
       <main>{children}</main>
       <div className=" border">footer</div>
