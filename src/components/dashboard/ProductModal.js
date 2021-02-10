@@ -114,7 +114,6 @@ ProductModal.propTypes = {}
 
 function mapStateToProps(state, props) {
   const { id } = props.match.params
-  console.log('id', id)
 
   const product = state.products[parseInt(id, 10)]
 

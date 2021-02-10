@@ -1,6 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { useForm } from 'react-hook-form'
+import PropTypes from 'prop-types'
+import { signIn } from '../../store/actions/authUser'
 
-function Login() {
+function Login(props) {
+  const { register, handleSubmit, watch, errors } = useForm()
+  const onSubmit = (data) => props.signIn(data)
+
+  console.log(watch('example'))
+
   return (
     <div>
       <div className=" container d-flex justify-content-center">
@@ -10,13 +19,15 @@ function Login() {
             Lorem Ipsum is simply dummy text of the printing <br /> and
             typesetting industry.
           </p>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
               <input
                 type="email"
                 className="form-control form-control__custom"
                 id="exampleInputEmail1"
+                ref={register({ required: true })}
                 aria-describedby="emailHelp"
+                name="email"
                 placeholder="email"
               />
             </div>
@@ -25,9 +36,12 @@ function Login() {
                 type="password"
                 className="form-control form-control__custom"
                 id="exampleInputPassword1"
+                ref={register({ required: true })}
+                name="password"
                 placeholder="password"
               />
             </div>
+            {errors.exampleRequired && <span>This field is required</span>}
             <div className="form-group form-check">
               <input
                 type="checkbox"
@@ -63,4 +77,20 @@ function Login() {
   )
 }
 
-export default Login
+Login.propTypes = {
+  signIn: PropTypes.func,
+}
+
+function mapStateToProps(state) {
+  return {
+    authError: state.authUser.authError,
+  }
+}
+
+function mapStateToDispatch(dispatch) {
+  return {
+    signIn: (creds) => dispatch(signIn(creds)),
+  }
+}
+
+export default connect(mapStateToProps, mapStateToDispatch)(Login)

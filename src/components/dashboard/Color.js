@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 
 function Color(props) {
   const { id } = useParams()
-  console.log('ss', id)
   return (
     <>
       <div className="btn-group" role="group" aria-label="First group">
