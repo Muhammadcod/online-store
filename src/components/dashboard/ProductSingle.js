@@ -3,9 +3,16 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import Color from './Color'
+import { handleAddProductToCart } from '../../store/actions/cart'
+import Modal from './Cart'
 
 function ProductSingle(props) {
   const [count, setCount] = useState(0)
+  const [show, setShow] = useState(false)
+
+  const addToCart = () => {
+    setShow(true)
+  }
 
   const increase = () => {
     setCount(count + 1)
@@ -16,7 +23,8 @@ function ProductSingle(props) {
     }
   }
   const { product } = props
-  const { title, price, colors } = product
+  const { title, price, colors, url } = product
+  console.log('==', show)
 
   return (
     <>
@@ -25,10 +33,10 @@ function ProductSingle(props) {
           <div className="col-md-6">
             <div className="d-flex">
               <div style={{ width: `20%` }} className="mr-5">
-                <img src="/boy.png" alt="item" className="w-100" />
+                <img src={url} alt="item" className="w-100" />
               </div>
               <div style={{ width: `50%` }}>
-                <img src="/boy.png" alt="item" className="w-100" />
+                <img src={url} alt="item" className="w-100" />
               </div>
             </div>
           </div>
@@ -83,6 +91,7 @@ function ProductSingle(props) {
                       type="button"
                       className="btn px-4"
                       style={{ background: `#FBB03B`, borderRadius: `40px` }}
+                      onClick={addToCart}
                     >
                       ADD TO CART
                     </button>
@@ -93,6 +102,7 @@ function ProductSingle(props) {
           </div>
         </div>
       </div>
+      <Modal show={show} />
     </>
   )
 }
@@ -114,4 +124,12 @@ function mapStateToProps(state, props) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(ProductSingle))
+function mapDispatchToProps(dispatch) {
+  return {
+    addToCart: (product) => dispatch(handleAddProductToCart(product)),
+  }
+}
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ProductSingle),
+)

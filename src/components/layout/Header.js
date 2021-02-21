@@ -1,9 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { FaRegUser } from 'react-icons/fa'
+import { signOut } from '../../store/actions/authUser'
 
-function Header() {
+function Header(props) {
   return (
     <>
       <div className="header nav-bar border">
@@ -42,7 +45,11 @@ function Header() {
             <span className=" align-self-center mr-4">
               <HiOutlineShoppingCart />
             </span>
-            <span className=" align-self-center">
+            <span
+              className=" align-self-center btn"
+              onClick={props.signOut}
+              aria-hidden="true"
+            >
               <FaRegUser />
             </span>
           </div>
@@ -52,4 +59,13 @@ function Header() {
   )
 }
 
-export default Header
+Header.propTypes = {
+  signOut: PropTypes.func,
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    signOut: () => dispatch(signOut()),
+  }
+}
+export default connect(null, mapDispatchToProps)(Header)

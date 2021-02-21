@@ -31,6 +31,7 @@ export function signOut() {
     const firebase = getFirebase()
     firebase
       .auth()
+      .signOut()
       .then(() => {
         dispatch({
           type: SIGNOUT_SUCCESS,
@@ -50,12 +51,13 @@ export function signUp(newUser) {
     const firebase = getFirebase()
     const firestore = firebase.firestore()
 
-    firebase.auth
+    firebase
+      .auth()
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then((r) =>
         firestore
           .collection('users')
-          .add(r.user.uid)
+          .doc(r.user.uid)
           .set({
             firstName: newUser.firstName,
             lastName: newUser.lastName,

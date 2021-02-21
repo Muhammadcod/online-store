@@ -1,23 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Product(props) {
-  const location = useLocation()
-
   const { product, id } = props
   const { title, price, url } = product
 
   return (
     <>
       <div className="col product--item">
-        <Link
-          to={{
-            pathname: `/product/${id}`,
-            state: { background: location },
-          }}
-        >
+        <Link to={`product/${id}`}>
           <div className="card">
             <div style={{ minHeight: `337px` }}>
               <img src={url} className="card-img-top" alt="..." />

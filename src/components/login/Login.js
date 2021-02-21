@@ -42,7 +42,8 @@ function Login(props) {
               />
             </div>
             {errors.exampleRequired && <span>This field is required</span>}
-            <div className="form-group form-check">
+            {/* // eslint-disable-next-line */}
+            {/* <div className="form-group form-check">
               <input
                 type="checkbox"
                 className="form-check-input"
@@ -54,15 +55,15 @@ function Login(props) {
               >
                 Keep me signed in
               </label>
-            </div>
-            <div className="mb-3 d-flex justify-content-between">
+            </div> */}
+            {/* <div className="mb-3 d-flex justify-content-between">
               <button type="submit" className="btn border btn__facebook">
                 Facebook
               </button>
               <button type="submit" className="btn btn__gmail">
                 Gmail
               </button>
-            </div>
+            </div> */}
             <button type="submit" className="btn btn__submit">
               Sign in
             </button>

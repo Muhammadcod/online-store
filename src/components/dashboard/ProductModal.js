@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
-import { useHistory, withRouter } from 'react-router-dom'
+import { useHistory, withRouter, Redirect, Link } from 'react-router-dom'
+import { handleAddProductToCart } from '../../store/actions/cart'
 // import PropTypes from 'prop-types'
 
 function ProductModal(props) {
   const history = useHistory()
   const [count, setCount] = useState(0)
+  const [open, setOpen] = useState(false)
+
+  const addToCart = () => {
+    history.goBack()
+    console.log('successful')
+    setOpen(true)
+  }
 
   const increase = () => {
     setCount(count + 1)
@@ -16,6 +24,10 @@ function ProductModal(props) {
       setCount(count - 1)
     }
   }
+  // to={{
+  //   pathname: `/product/${id}`,
+  //       state: { background: location },
+  // }}
 
   const back = (e) => {
     e.stopPropagation()
@@ -23,6 +35,9 @@ function ProductModal(props) {
   }
   const { product } = props
 
+  if (open) {
+    return <Redirect to="/cart" />
+  }
   if (product === null) return null
   const { title, url, price } = product
 
@@ -86,6 +101,7 @@ function ProductModal(props) {
                       type="button"
                       className="btn px-4"
                       style={{ background: `#FBB03B`, borderRadius: `40px` }}
+                      onClick={addToCart}
                     >
                       ADD TO CART
                     </button>
@@ -121,4 +137,13 @@ function mapStateToProps(state, props) {
     product: !product ? null : product,
   }
 }
-export default withRouter(connect(mapStateToProps)(ProductModal))
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addToCart: (product) => dispatch(handleAddProductToCart(product)),
+  }
+}
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ProductModal),
+)

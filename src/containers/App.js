@@ -10,7 +10,8 @@ import Login from '../components/login/Login'
 import Homepage from '../components/hompage/homepage'
 import Signup from '../components/login/Signup'
 import ProductSingle from '../components/dashboard/ProductSingle'
-import ProductModal from '../components/dashboard/ProductModal'
+// import ProductModal from '../components/dashboard/ProductModal'
+import Cart from '../components/dashboard/Cart'
 
 const theme = createMuiTheme({
   typography: {
@@ -39,7 +40,7 @@ function App(props) {
           </Switch>
 
           {background && (
-            <Route path="/product/:id" exact children={<ProductModal />} /> // eslint-disable-line
+            <Route path="/cart" exact children={<Cart />} /> // eslint-disable-line
           )}
         </div>
       </Layout>

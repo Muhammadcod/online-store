@@ -34,6 +34,10 @@ ProductsContainer.propTypes = {
 }
 
 function mapStateToProps(state) {
+  console.log(
+    '=====',
+    Object.values(state.products).map((p) => p.id),
+  )
   const products = state.products ? Object.keys(state.products) : null
 
   return {
