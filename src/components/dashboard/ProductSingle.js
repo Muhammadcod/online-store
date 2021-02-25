@@ -2,29 +2,32 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import Color from './Color'
 import { handleAddProductToCart } from '../../store/actions/cart'
 import Modal from './Cart'
 
 function ProductSingle(props) {
-  const [count, setCount] = useState(0)
   const [show, setShow] = useState(false)
+  const [text, setText] = useState('ADD TO CART')
+  const [itemQuantity, setItemQuantity] = useState(0)
+  const { product } = props
+  const { url, id, price, title } = product
 
-  const addToCart = () => {
+  const handleOptionChange = (e) => {
+    const selectedQuantity = e.target.value
+    setItemQuantity(selectedQuantity)
+  }
+
+  const submit = () => {
+    setText('ADD TO CART...')
+    props.addToCart({
+      itemQuantity,
+      id,
+      price,
+      title,
+    })
+    setText('ADD TO CART')
     setShow(true)
   }
-
-  const increase = () => {
-    setCount(count + 1)
-  }
-  const decrease = () => {
-    if (count > 0) {
-      setCount(count - 1)
-    }
-  }
-  const { product } = props
-  const { title, price, colors, url } = product
-  console.log('==', show)
 
   return (
     <>
@@ -42,9 +45,8 @@ function ProductSingle(props) {
           </div>
           <div className="col-md-6">
             <div className="">
-              <h6>
-                <span className="badge badge-secondary">sale</span>
-              </h6>
+              <span className="badge badge-secondary">sale</span>
+
               <p className="item__name">{title}</p>
               <div className="item__price">
                 {new Intl.NumberFormat('en-NG', {
@@ -53,51 +55,27 @@ function ProductSingle(props) {
                   maximumFractionDigits: 2,
                 }).format(price)}
               </div>
-              <div>
-                <p>Color:</p>
-                <Color colors={colors} />
-              </div>
-              <div>
-                <p>Size:</p>
-                <Color colors={colors} />
-              </div>
-              <div>
-                <p>Quantity:</p>
-                <div
-                  className="btn-toolbar"
-                  role="toolbar"
-                  aria-label="Toolbar with button groups"
+              <form>
+                <label htmlFor="exampleInputEmail1">Quantity:</label>
+
+                <input
+                  type="number"
+                  id="qty"
+                  min={itemQuantity}
+                  defaultValue={itemQuantity}
+                  name="quantity"
+                  onChange={handleOptionChange}
+                />
+
+                <button
+                  type="button"
+                  className="btn px-4"
+                  style={{ background: `#FBB03B`, borderRadius: `40px` }}
+                  onClick={submit}
                 >
-                  <div
-                    className="btn-group mr-3 border"
-                    style={{ borderRadius: `5px` }}
-                    role="group"
-                    aria-label="First group"
-                  >
-                    <button type="button" className="btn " onClick={decrease}>
-                      -
-                    </button>
-                    <span className="border py-2 px-3">{count}</span>
-                    <button type="button" className="btn" onClick={increase}>
-                      +
-                    </button>
-                  </div>
-                  <div
-                    className="btn-group mr-2"
-                    role="group"
-                    aria-label="Second group"
-                  >
-                    <button
-                      type="button"
-                      className="btn px-4"
-                      style={{ background: `#FBB03B`, borderRadius: `40px` }}
-                      onClick={addToCart}
-                    >
-                      ADD TO CART
-                    </button>
-                  </div>
-                </div>
-              </div>
+                  {text}
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -110,6 +88,7 @@ function ProductSingle(props) {
 ProductSingle.propTypes = {
   title: PropTypes.string,
   price: PropTypes.number,
+  addToCart: PropTypes.func,
   product: PropTypes.object,
 }
 

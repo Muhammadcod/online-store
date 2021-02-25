@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { handleCartData } from '../../store/actions/cart'
 
 const ModalView = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
@@ -21,6 +23,12 @@ const ModalContent = styled.div`
 `
 
 const Modal = (props) => {
+  // const { state, setState } = useState()
+  useEffect(() => {
+    console.log('i am ready')
+    props.dispatch(handleCartData())
+  })
+
   if (!props.show) {
     return null
   }
@@ -42,6 +50,18 @@ const Modal = (props) => {
 
 Modal.propTypes = {
   show: PropTypes.bool,
+  dispatch: PropTypes.func,
 }
 
-export default Modal
+/* function mapStateToProps(state, props) {
+  const { id } = props.match.params
+  const { products } = state
+
+  const product = products[id]
+
+  return {
+    product,
+  }
+} */
+
+export default connect()(Modal)
