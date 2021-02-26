@@ -2,10 +2,11 @@ import {
   ADD_PRODUCT_TO_CART,
   ADD_PRODUCT_TO_CART_ERROR,
   RECIEVE_CART_ITEMS,
+  UPDATE_CART,
 } from '../actions/actionTypes'
 
 const initialState = {
-  cartError: null,
+  // cartError: null,
 }
 
 export default function cart(state = initialState, action) {
@@ -20,13 +21,19 @@ export default function cart(state = initialState, action) {
       console.log('added to cart successfully')
       return {
         ...state,
-        cartError: null,
+        // cartError: null,
+      }
+    case UPDATE_CART:
+      console.log('update cart successfully')
+      return {
+        ...state,
+        // cartError: null,
       }
     case ADD_PRODUCT_TO_CART_ERROR:
       console.log('error adding to cart')
       return {
         ...state,
-        cartError: 'failed',
+        // cartError: 'failed',
       }
     default:
       return state
