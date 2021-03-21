@@ -82,7 +82,7 @@ function Signup(props) {
                 </label>
               </div>
               <button type="submit" className="btn border btn__submit">
-                Sign in
+                Sign up
               </button>
             </form>
             <small className="form-text text-muted">

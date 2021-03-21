@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import {
   handleAddProductToCart,
+  handleAddProductToUser,
   handleUpdateToCart,
 } from '../../store/actions/cart'
-import Modal from './Cart'
+import CartContainer from '../../containers/CartContainer'
 
 function ProductSingle(props) {
   const [show, setShow] = useState(false)
@@ -29,6 +30,9 @@ function ProductSingle(props) {
         price,
         title,
       })
+      /* props.addToUser({
+        id,
+      }) */
     } else {
       props.updateCart({
         itemQuantity,
@@ -90,7 +94,7 @@ function ProductSingle(props) {
           </div>
         </div>
       </div>
-      <Modal show={show} />
+      <CartContainer show={show} />
     </>
   )
 }
@@ -99,6 +103,7 @@ ProductSingle.propTypes = {
   title: PropTypes.string,
   price: PropTypes.number,
   addToCart: PropTypes.func,
+  // addToUser: PropTypes.func,
   product: PropTypes.object,
   cartId: PropTypes.string,
   updateCart: PropTypes.func,
@@ -124,6 +129,7 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
   return {
     addToCart: (product) => dispatch(handleAddProductToCart(product)),
+    addToUser: (productId) => dispatch(handleAddProductToUser(productId)),
     updateCart: (item) => dispatch(handleUpdateToCart(item)),
   }
 }

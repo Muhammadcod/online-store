@@ -57,11 +57,11 @@ export function signUp(newUser) {
       .then((r) =>
         firestore
           .collection('users')
-          .doc(r.user.uid)
+          .doc(newUser.email)
           .set({
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            initials: newUser.firstName[0] + newUser.lastName[0],
+            tokenId: r.user.uid,
+            userEmail: newUser.email,
+            userName: newUser.firstName + newUser.lastName,
           }),
       )
       .then(() => {

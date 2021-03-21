@@ -4,6 +4,8 @@ import {
   ADD_PRODUCT_TO_CART_ERROR,
   UPDATE_CART,
   UPDATE_CART_ERROR,
+  UPDATE_USER,
+  UPDATE_USER_ERROR,
 } from './actionTypes'
 
 export function receiveCartItems(cartItems) {
@@ -27,6 +29,13 @@ export function updateCart(item) {
   }
 }
 
+export function updateUser(itemId) {
+  return {
+    type: UPDATE_USER,
+    itemId,
+  }
+}
+
 export function addProductToCartError(err) {
   return {
     type: ADD_PRODUCT_TO_CART_ERROR,
@@ -39,20 +48,21 @@ export function handleAddProductToCart(item) {
     const firebase = getFirebase()
     const firestore = firebase.firestore()
     const authorId = getState().firebase.auth.uid
+    const authorEmail = getState().firebase.auth.email
     const { firstName, lastName } = getState().firebase.profile
+
+    // Add item to cart
     firestore
       .collection('cart')
+      .doc(authorEmail)
+      .collection('userCartList')
       .doc(item.id)
-      .set(
-        {
-          ...item,
-          authorId,
-          firstName,
-          lastName,
-          createdAt: new Date(),
-        },
-        { merge: true },
-      )
+      .set({
+        ...item,
+        authorId,
+        createdBy: firstName + lastName,
+        createdAt: new Date(),
+      })
       .then(() => {
         dispatch(updateCart(item))
       })
@@ -64,12 +74,36 @@ export function handleAddProductToCart(item) {
       })
   }
 }
+
+export function handleAddProductToUser(itemId) {
+  return (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase()
+    const firestore = firebase.firestore()
+    const authorId = getState().firebase.auth.uid
+
+    // Atomically add a cart id to the user items array field.
+    firestore
+      .collection('users')
+      .doc(authorId)
+      .update({
+        items: firebase.firestore.FieldValue.arrayUnion(itemId),
+      })
+      .then(() => {
+        dispatch(updateUser(itemId))
+      })
+      .catch((err) => {
+        dispatch({
+          type: UPDATE_USER_ERROR,
+          err,
+        })
+      })
+  }
+}
+
 export function handleUpdateToCart(item) {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase()
     const firestore = firebase.firestore()
-    // const authorId = getState().firebase.auth.uid
-    // const { firstName, lastName } = getState().firebase.profile
 
     firestore
       .collection('cart')
@@ -92,8 +126,10 @@ export function handleCartData() {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase()
     const db = firebase.firestore()
+    const authorId = getState().firebase.auth.uid
 
-    db.collection('cart')
+    db.collection('user')
+      .doc(authorId)
       .get()
       .then((snapshot) => {
         const cartItems = []

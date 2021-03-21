@@ -11,7 +11,7 @@ import Homepage from '../components/hompage/homepage'
 import Signup from '../components/login/Signup'
 import ProductSingle from '../components/dashboard/ProductSingle'
 // import ProductModal from '../components/dashboard/ProductModal'
-import Cart from '../components/dashboard/Cart'
+import Cart from '../components/dashboard/CartItem'
 
 const theme = createMuiTheme({
   typography: {
